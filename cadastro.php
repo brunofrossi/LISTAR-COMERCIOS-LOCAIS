@@ -153,14 +153,89 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">E-mail:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="email" name="txtEmail" class="campo form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Senha:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="password" name="txtSenha" class="campo form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Imagem:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <input type="file" name="txtImagem" class="campo form-control" />
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Observação:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <textarea name="txtImagem" class="campo form-control" >
+                                                                </textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Funcionamento:</label>
+                                                            <div class="col-sm-12 col-md-9">
+
+                                                                    <!-- Tabela -->
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Dia</th>
+                                                                                <th>Abertura</th>
+                                                                                <th>Fechamento</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="text-left"><input class="form-check-input" type="checkbox" id="segunda" value="1" name="txtSegunda"><label class="form-check-label" for="segunda">Segunda-Feira</label></td>
+                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left"><input class="form-check-input" type="checkbox" id="terca" value="2" name="txtTerca"><label class="form-check-label" for="terca">Terça-Feira</label></td>
+                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left"><input class="form-check-input" type="checkbox" id="quarta" value="3" name="txtQuarta"><label class="form-check-label" for="quarta">Quarta-Feira</label></td>
+                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left"><input class="form-check-input" type="checkbox" id="quinta" value="4" name="txtQuinta"><label class="form-check-label" for="quinta">Quinta-Feira</label></td>
+                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left"><input class="form-check-input" type="checkbox" id="sexta" value="5" name="txtSexta"><label class="form-check-label" for="sexta">Sexta-Feira</label></td>
+                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left"><input class="form-check-input" type="checkbox" id="sabado" value="6" name="txtSabado"><label class="form-check-label" for="sabado">Sábado</label></td>
+                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-left"><input class="form-check-input" type="checkbox" id="domingo" value="0" name="txtDomingo"><label class="form-check-label" for="domingo">Domingo</label></td>
+                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <!-- ./Tabela -->
+                                                        </div>
+
                                                         <br>
-                                                        <input type="submit" value="Entrar" name="btGravar" class="btn btn-primary" >
+                                                        <div class="col-xs-12">
+                                                            <input type="submit" value="Gravar" name="btGravar" class="btn btn-primary" >
                                                         <br><br><br>
+                                                        </div>
                                                     </div>  
                                                 </form>
                                             </div>
