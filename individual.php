@@ -41,7 +41,7 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
     
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom bg-sup">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <button class="btn btn-primary bt-menu" id="menu-toggle">
             <img src="icons/chevron-right.svg" alt="" width="24" height="24" title="Facebook">
         </button>
@@ -51,13 +51,13 @@
                 if(isset($_GET['id'])){
                     $id = $_GET['id'];
                     //buscar nome segmento
-                    $sql = "SELECT * FROM segmento WHERE idsegmento = $id";
+                    $sql = "SELECT * FROM comercio WHERE idcomercio = $id";
                     $resultado= $conexao->query($sql);
 
                     $linha=$resultado->fetch_array();
-                    echo $linha['nome'];
+                    echo $linha['nome_fantasia'];
                 }else{
-                    echo "Segmento";
+                    header("location:index.php");
                 }
             ?>
         </span>
@@ -71,14 +71,14 @@
                     if(isset($_GET['id'])){
                         $id = $_GET['id'];
                         //buscar segmentos
-                        $sql = "SELECT * FROM comercio WHERE aprovado = 1 AND segmento_idsegmento = $id ORDER BY ranking, nome_fantasia";
+                        $sql = "SELECT * FROM comercio WHERE aprovado = 1 AND idcomercio = $id ORDER BY ranking, nome_fantasia";
                         $resultado= $conexao->query($sql);
 
                         while($linha=$resultado->fetch_array()){
                 ?>
 
                 <!--CARD-->
-                <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="col-xs-12 col-md-10 offset-md-1">
                     <div class="image-flip">
                         <div class="mainflip">
                             <div class="frontside">
@@ -88,9 +88,25 @@
                                         <h4 class="card-title">
                                             <?php echo $linha['nome_fantasia']; ?>
                                         </h4>
+                                        <!-- Telefone -->
                                         <div class="col-xs-6">
                                             <img src="icons/phone.svg" alt="Telephone" title="Telephone">   
                                             <?php echo $linha['telefone']; ?>
+                                        </div>
+                                        <!-- Endereço -->
+                                        <div class="col-xs-6">
+                                        <img src="icons/geo-alt.svg" alt="Endereço" title="Endereço">
+                                            <?php echo $linha['rua'].", ".$linha['numero']." - ".$linha['bairro']; ?>
+                                        </div>
+                                        <!-- Funcionamento -->
+                                        <div class="col-xs-6">
+                                            <img src="icons/clock.svg" alt="Horário" title="Horário">   
+                                            <?php echo $linha['horario_func']; ?>
+                                        </div>
+                                        <!-- Site -->
+                                        <div class="col-xs-6">
+                                            <img src="icons/laptop.svg" alt="Horário" title="Horário">   
+                                            <?php echo '<a href="'.$linha['site'].'" target="_blank">'.$linha['site'].'</a>'; ?>
                                         </div>
                                         <div class="col-xs-6">
                                             <!-- REDES SOCIAIS-->
@@ -109,8 +125,8 @@
                                             <!-- ./REDES SOCIAIS-->
                                         </div>
 
-                                        <a href="<?php echo "individual.php?id=".$linha['idcomercio']; ?>" class="btn btn-sm btn-outline-secondary">
-                                            <img src="icons/plus.svg" alt="Saiba Mais" title="Saiba Mais"> Saiba mais
+                                        <a href="<?php echo "index.php?id=".$linha['segmento_idsegmento']; ?>" class="btn btn-sm btn-outline-secondary">
+                                            <img src="icons/arrow-return-left.svg" alt="Voltar" title="Voltar"> Voltar
                                         </a>
                                     </div>
                                 </div>

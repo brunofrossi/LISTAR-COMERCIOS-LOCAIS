@@ -1,0 +1,46 @@
+.bt-menu{
+    margin-left: -17px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #dee2e6 !important;
+    background: #fff;
+}
+
+.bt-menu:active{
+    background: #FFF;
+}
+
+.bt-menu:hover{
+    background: #FFF;
+}
+
+.bt-menu:focus{
+    background: #FFF;
+}
+
+.nome-sup{
+    width: 100%;
+    color: #00510F !important;
+    font-weight: 700;
+}
+
+.espaco{
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+}
+
+.link-cadastro{
+    font-size: 12px;
+    padding: 3px;
+}
+
+.cabecalho-titulo{
+    border-bottom: 4px solid #00510f;
+    color: #fff;
+    background: #00510f !important;
+    font-weight: 700;
+}
+
+.p-cadastro{
+    margin: 0 -10px -10px 0;
+}
