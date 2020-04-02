@@ -47,7 +47,8 @@ CREATE TABLE `comercio` (
   `imagem` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(45) NOT NULL,
-  `bairro` varchar(100) NOT NULL
+  `bairro` varchar(100) NOT NULL,
+  `observacao` text NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
