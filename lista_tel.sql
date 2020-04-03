@@ -10,7 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "-03:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,78 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Banco de dados: `lista_tel`
---
-CREATE DATABASE IF NOT EXISTS `lista_tel` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `lista_tel`;
-
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `comercio`
+-- Estrutura para tabela segmento
 --
 
-CREATE TABLE `comercio` (
-  `idcomercio` int(11) NOT NULL,
-  `nome_fantasia` varchar(155) DEFAULT NULL,
-  `telefone` varchar(45) DEFAULT NULL,
-  `instagram` varchar(255) DEFAULT NULL,
-  `facebook` varchar(255) DEFAULT NULL,
-  `aprovado` tinyint(4) DEFAULT 0,
-  `ranking` double DEFAULT 0,
-  `segmento_idsegmento` int(11) NOT NULL,
-  `rua` varchar(100) DEFAULT NULL,
-  `numero` varchar(30) DEFAULT NULL,
-  `complemento` varchar(100) DEFAULT NULL,
-  `CEP` varchar(10) DEFAULT NULL,
-  `site` varchar(255) DEFAULT NULL,
-  `imagem` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `senha` varchar(45) NOT NULL,
-  `bairro` varchar(100) NOT NULL,
-  `observacao` text NOT NULL
+CREATE TABLE segmento (
+  idsegmento int(11) PRIMARY KEY AUTO_INCREMENT,
+  nome varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `comercio`
+-- Despejando dados para a tabela segmento
 --
 
-INSERT INTO `comercio` (`idcomercio`, `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`, `segmento_idsegmento`, `rua`, `numero`, `complemento`, `CEP`, `site`, `imagem`, `email`, `senha`, `bairro`) VALUES
-(1, 'Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais - Campus Muriaé', '(32) 3696-2850', 'https://www.instagram.com/ifsudestemgmuriae/', 'https://www.facebook.com/ifsudestemgmuriaee', 1, 0, 13, 'Avenida Coronel Monteiro de Castro', '550', NULL, '36884-036', 'https://www.ifsudestemg.edu.br/muriae', 'logoif.png', '', '', ''),
-(2, 'Teste', '(32) 98812-3625', 'http://www.instagram.com/diegorossi_0', 'http://www.facebook.com/diegorossi0', 1, 0, 1, 'Rua José Pinto de Souza', '55', '', '36881-056', 'http://www.diegorossi.com.br', '02042019524573001912_575973919815278_3200540973766944123_n.jpg', '', '', ''),
-(3, 'Teste 2', '(32) 98812-3625', 'http://www.instagram.com/diegorossi_0', 'http://www.facebook.com/diegorossi0', 1, 0, 5, 'Rua José Pinto de Souza', '55', '', '36881-056', 'http://www.diegorossi.com.br', '020420201101832361.jpg', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `funcionamento`
---
-
-CREATE TABLE `funcionamento` (
-  `idfuncionamento` int(11) NOT NULL,
-  `idcomercio` int(11) NOT NULL,
-  `dia_semana` int(11) NOT NULL,
-  `abertura` varchar(10) NOT NULL,
-  `fechamento` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `segmento`
---
-
-CREATE TABLE `segmento` (
-  `idsegmento` int(11) NOT NULL,
-  `nome` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Despejando dados para a tabela `segmento`
---
-
-INSERT INTO `segmento` (`idsegmento`, `nome`) VALUES
+INSERT INTO segmento (idsegmento, nome) VALUES
 (1, 'Alimentos e Bebidas'),
 (2, 'Arte e Antiguidades'),
 (3, 'Artigos Religiosos'),
@@ -188,84 +132,75 @@ INSERT INTO `segmento` (`idsegmento`, `nome`) VALUES
 (97, 'Turismo');
 
 --
--- Índices de tabelas apagadas
---
+
+
+-- --------------------------------------------------------
 
 --
--- Índices de tabela `comercio`
---
-ALTER TABLE `comercio`
-  ADD PRIMARY KEY (`idcomercio`),
-  ADD KEY `fk_comercio_segmento` (`segmento_idsegmento`);
-
---
--- Índices de tabela `funcionamento`
---
-ALTER TABLE `funcionamento`
-  ADD PRIMARY KEY (`idfuncionamento`),
-  ADD KEY `fkcomercio` (`idcomercio`);
-
---
--- Índices de tabela `segmento`
---
-ALTER TABLE `segmento`
-  ADD PRIMARY KEY (`idsegmento`);
-
---
--- AUTO_INCREMENT de tabelas apagadas
+-- Estrutura para tabela usuario
 --
 
---
--- AUTO_INCREMENT de tabela `comercio`
---
-ALTER TABLE `comercio`
-  MODIFY `idcomercio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+CREATE TABLE usuario (
+idusuario int(11) PRIMARY KEY AUTO_INCREMENT,
+email varchar(255) NOT NULL,
+senha varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- AUTO_INCREMENT de tabela `funcionamento`
---
-ALTER TABLE `funcionamento`
-  MODIFY `idfuncionamento` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `segmento`
---
-ALTER TABLE `segmento`
-  MODIFY `idsegmento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
-
---
--- Restrições para dumps de tabelas
+-- Estrutura para tabela comercio
 --
 
---
--- Restrições para tabelas `comercio`
---
-ALTER TABLE `comercio`
-  ADD CONSTRAINT `fk_comercio_segmento` FOREIGN KEY (`segmento_idsegmento`) REFERENCES `segmento` (`idsegmento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CREATE TABLE comercio (
+  idcomercio int(11) PRIMARY KEY AUTO_INCREMENT,
+  nome_fantasia varchar(155) DEFAULT NULL,
+  nome_responsavel varchar(155) DEFAULT NULL,
+  telefone varchar(45) DEFAULT NULL,
+  instagram varchar(255) DEFAULT NULL,
+  facebook varchar(255) DEFAULT NULL,
+  aprovado tinyint(4) DEFAULT 0,
+  ranking double DEFAULT 0,
+  rua varchar(100) DEFAULT NULL,
+  numero varchar(30) DEFAULT NULL,
+  complemento varchar(100) DEFAULT NULL,
+  CEP varchar(10) DEFAULT NULL,
+  site varchar(255) DEFAULT NULL,
+  imagem varchar(255) NOT NULL,
+  bairro varchar(100) NOT NULL,
+  observacao text NOT NULL,
+  usuario_idusuario int(11) NOT NULL,
+  segmento_idsegmento int(11) NOT NULL,
+  CONSTRAINT fk_comercio_segmento FOREIGN KEY (segmento_idsegmento) REFERENCES segmento (idsegmento) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT fk_comercio_usuario FOREIGN KEY (usuario_idusuario) REFERENCES usuario (idusuario) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Restrições para tabelas `funcionamento`
+-- Despejando dados para a tabela comercio
 --
-ALTER TABLE `funcionamento`
-  ADD CONSTRAINT `fkcomercio` FOREIGN KEY (`idcomercio`) REFERENCES `comercio` (`idcomercio`);
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela funcionamento
+--
+
+CREATE TABLE funcionamento (
+  idfuncionamento int(11)PRIMARY KEY AUTO_INCREMENT,
+  comercio_idcomercio int(11) NOT NULL,
+  dia_semana int(11) NOT NULL,
+  abertura varchar(10) NOT NULL,
+  fechamento varchar(10) NOT NULL,
+  CONSTRAINT fkfuncionamento_comercio FOREIGN KEY (comercio_idcomercio) REFERENCES comercio (idcomercio)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 
 --
 -- Metadata
 --
-USE `phpmyadmin`;
+USE phpmyadmin;
 
---
--- Metadata para tabela comercio
---
-
---
--- Metadata para tabela funcionamento
---
-
---
--- Metadata para tabela segmento
---
 
 --
 -- Metadata para o banco de dados lista_tel
