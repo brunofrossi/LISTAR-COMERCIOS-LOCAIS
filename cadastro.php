@@ -284,7 +284,7 @@
             exit;
         }
 
-        move_uploaded_file($imagemTmp, "img/".$imagem);
+        move_uploaded_file($imagemTmp, "images/".$imagem);
 
         if(isset($_POST["txtInativo"]))
             $inativo=$_POST["txtInativo"];
