@@ -276,11 +276,10 @@
 
         //enviar a imagem
         if($_FILES["txtImagem"]["error"]!=0){
-            echo "Não foi possível cadastrar o produto, erro na imagem";
-            exit;
+            $imagem = "shop_379425.png";
+        }else{
+            move_uploaded_file($imagemTmp, "images/".$imagem);
         }
-
-        move_uploaded_file($imagemTmp, "images/".$imagem);
 
         if(isset($_POST["txtInativo"]))
             $inativo=$_POST["txtInativo"];
