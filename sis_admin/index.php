@@ -1,80 +1,107 @@
-<!doctype html>
-<html class="no-js" lang="pt-br">
+<?php
+    include '../conexao.php';
+?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - srtdash</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="images/icon/favicon.ico">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/metisMenu.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/slicknav.min.css">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
-    <link rel="stylesheet" href="css/typography.css">
-    <link rel="stylesheet" href="css/default-css.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- modernizr css -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Telefônica</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="css/simple-sidebar.css" rel="stylesheet" id="sidebar-css">
+    <link href="css/style.css" rel="stylesheet" id="style">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 </head>
-
 <body>
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <div class="login-area login-s2">
-        <div class="container">
-            <div class="login-box ptb--100">
-                <form method="POST" action="systemHome.php">
-                    <div class="login-form-head">
-                        <h4>Acesso ao sistema</h4>
-                        <p>Para acessar a Agenda Online você precisa apenas de um e-mail e uma senha.</p>
-                    </div>
-                    <div class="login-form-body">
-                        <div class="form-gp">
-                            <label for="exampleInputEmail1">Endereço de E-mail </label>
-                            <input type="email" id="exampleInputEmail1">
-                            <i class="ti-email"></i>
-                            <div class="text-danger"></div>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" id="exampleInputPassword1">
-                            <i class="ti-lock"></i>
-                            <div class="text-danger"></div>
-                        </div>
-                        <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Entrar <i class="ti-arrow-right"></i></button>
-                        </div>
-                        <div class="form-footer text-center mt-5">
-                            <p class="text-muted">Se você ainda não está cadastrado, <a href="register.html">cadastre-se </a> agora mesmo.</p>
-                        </div>
-                    </div>
-                </form>
+
+<div class="d-flex" id="wrapper">
+<!-- Menu -->
+<div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading cabecalho-titulo text-center">Agenda Telefônica<p class="text-right p-cadastro"></p>
+        </div>
+            <div class="list-group list-group-flush">
+                <a href="../index.php" class='list-group-item list-group-item-action bg-light'>Voltar</a>
             </div>
+    </div>
+<!-- /Menu -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom bg-sup">
+            <button class="btn btn-primary bt-menu" id="menu-toggle">
+                <img src="icons/chevron-right.svg" alt="" width="24" height="24" title="Facebook">
+            </button>
+        </nav>
+
+      <div class="container-fluid">
+            <div class="row">
+                <div class="espaco"> &nbsp; </div>
+
+                <!--CARD-->
+                <div class="col-xs-12 col-md-10 offset-md-1">
+                    <div class="image-flip">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <div class="col-xs-6">
+
+                                            <!-- FORMULÁRIO -->
+                                            <div id="formulario-cadastro">
+                                                <form method="POST" action="systemHome.php">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">E-mail:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="email" name="txtEmail" class="campo form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Senha:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="password" name="txtSenha" class="campo form-control" />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-xs-12">
+                                                            <input type="submit" value="Logar" name="btGravar" class="btn btn-primary" >
+                                                        <br><br><br>
+                                                        </div>
+                                                    </div>  
+                                                </form>
+                                            </div>
+                                            <!-- ./FORMULÁRIO -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--./CARD-->
+               
+                
+
+                
+                <div class="espaco"> &nbsp; </div>
+            </div>
+            
         </div>
     </div>
-    <!-- login area end -->
+    <!-- /#page-content-wrapper -->
+</div>
 
-    <!-- jquery latest version -->
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <!-- bootstrap 4 js -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/metisMenu.min.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    
-    <!-- others plugins -->
-    <script src="js/plugins.js"></script>
-    <script src="js/scripts.js"></script>
+
+<!--Script-->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
 </body>
-
 </html>
