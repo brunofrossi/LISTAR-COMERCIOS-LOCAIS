@@ -19,6 +19,7 @@
 <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
+    <img src="assets/logoif.png" />
       <div class="sidebar-heading cabecalho-titulo text-center">Agenda Telefônica<p class="text-right p-cadastro"><a class="btn btn-danger link-cadastro" href="cadastro.php">Cadastre-se</a></p></div>
       <div class="list-group list-group-flush">
 
