@@ -93,6 +93,11 @@
                                             <img src="icons/phone.svg" alt="Telephone" title="Telephone">   
                                             <?php echo $linha['telefone']; ?>
                                         </div>
+                                        <!-- Telefone -->
+                                        <div class="col-xs-6">
+                                            <img src="icons/envelope.svg" alt="E-mail" title="E-mail">   
+                                            <?php echo $linha['email']; ?>
+                                        </div>
                                         <!-- Endereço -->
                                         <div class="col-xs-6">
                                         <img src="icons/geo-alt.svg" alt="Endereço" title="Endereço">
@@ -101,13 +106,50 @@
                                         <!-- Funcionamento -->
                                         <div class="col-xs-6">
                                             <img src="icons/clock.svg" alt="Horário" title="Horário">   
-                                            <?php echo $linha['horario_func']; ?>
+                                            Horário de Funcionamento:<br /><br />
+                                            <!--Exibir os horários de funcionamento -->
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Dia da semana</th>
+                                                        <th>Abertura</th>
+                                                        <th>Fechamento</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                        $dia = ['Domingo', 'Segunda-feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
+                                                        $sql = "SELECT * FROM funcionamento WHERE idcomercio = $id ORDER BY dia_semana";
+                                                        $retorno = $conexao->query($sql);
+                                
+                                                        while($line=$retorno->fetch_array()){
+                                                    ?>
+                                                    <tr>
+                                                        <td class="text-left"><?php echo $dia[$line['dia_semana']]; ?></td>
+                                                        <td><?php echo $line['abertura']; ?></td>
+                                                        <td><?php echo $line['fechamento']; ?></td>
+                                                    </tr>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+
+
                                         </div>
                                         <!-- Site -->
                                         <div class="col-xs-6">
                                             <img src="icons/laptop.svg" alt="Horário" title="Horário">   
                                             <?php echo '<a href="'.$linha['site'].'" target="_blank">'.$linha['site'].'</a>'; ?>
                                         </div>
+                                        <!-- Observação -->
+                                        <?php if(isset($linha['observacao'])){ ?>
+                                        <div class="col-xs-6">
+                                            <img src="icons/chat-dots.svg" alt="Observação" title="Observação">   
+                                            <?php echo $linha['observacao']; ?>
+                                        </div>
+                                        <?php } ?>
+
                                         <div class="col-xs-6">
                                             <!-- REDES SOCIAIS-->
                                             <ul class="list-inline">
