@@ -82,12 +82,6 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">Horário de funcionamento:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtHorario" class="campo form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Segmento:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <select name="txtSegmento" class="campo form-control">
@@ -173,8 +167,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Observação:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <textarea name="txtImagem" class="campo form-control" >
-                                                                </textarea>
+                                                                <textarea name="txtObservacao" class="campo form-control" ></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -193,38 +186,38 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="segunda" value="1" name="txtSegunda"><label class="form-check-label" for="segunda">Segunda-Feira</label></td>
-                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtInicioSeg" class="campo form-control" /></td>
                                                                                 <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="terca" value="2" name="txtTerca"><label class="form-check-label" for="terca">Terça-Feira</label></td>
-                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtInicioTer" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimTer" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quarta" value="3" name="txtQuarta"><label class="form-check-label" for="quarta">Quarta-Feira</label></td>
-                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtInicioQua" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimQua" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quinta" value="4" name="txtQuinta"><label class="form-check-label" for="quinta">Quinta-Feira</label></td>
-                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtInicioQui" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimQui" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sexta" value="5" name="txtSexta"><label class="form-check-label" for="sexta">Sexta-Feira</label></td>
-                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtInicioSex" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSex" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sabado" value="6" name="txtSabado"><label class="form-check-label" for="sabado">Sábado</label></td>
-                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtInicioSab" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimSab" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="domingo" value="0" name="txtDomingo"><label class="form-check-label" for="domingo">Domingo</label></td>
-                                                                                <td><input type="text" name="txtIinicioSeg" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtInicioDom" class="campo form-control" /></td>
+                                                                                <td><input type="text" name="txtFimDom" class="campo form-control" /></td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -263,7 +256,6 @@
         $idsegmento=$_POST["txtSegmento"];
         $nome=$_POST["txtNome"];
         $telefone=$_POST["txtTelefone"];
-        $horario=$_POST["txtHorario"];
         $instagram=$_POST["txtInstagram"];
         $facebook=$_POST["txtFacebook"];
         $aprovado=1;
@@ -274,6 +266,10 @@
         $bairro=$_POST["txtBairro"];
         $cep=$_POST["txtCep"];
         $site=$_POST["txtSite"];
+        $email=$_POST["txtEmail"];
+        $senha=md5($_POST["txtSenha"]);
+        $obs=$_POST["txtObservacao"];
+
         //ARQUIVOS
         $imagemTmp=$_FILES["txtImagem"]["tmp_name"];
         $imagem=date("dmyHis").$_FILES["txtImagem"]["name"];
@@ -291,16 +287,94 @@
         else
             $inativo=0;
        
-        $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `horario_func`, `instagram`, `facebook`, `aprovado`, `ranking`,
-        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`) 
-         VALUES ( '$nome', '$telefone', '$horario', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
-        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem') ";
-
-        echo $sql;
+        $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`,
+        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `email`, `senha`, `observacao`) 
+         VALUES ( '$nome', '$telefone', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
+        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$email', '$senha', '$obs') ";
 
         $conexao->query($sql);
 
         if($conexao->errno == 0){
+            $id = $conexao->insert_id;
+
+            //Capturando os dias da semana e os horários
+            //Segunda
+            if(isset($_POST["txtSegunda"])){
+                $inicio = $_POST["txtInicioSeg"];
+                $fim = $_POST["txtFimSeg"];
+
+                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                 VALUES ( '$id', 1, '$inicio', '$fim') ";
+        
+                $conexao->query($sql);
+            }
+
+            //Terça
+            if(isset($_POST["txtTerca"])){
+                $inicio = $_POST["txtInicioTer"];
+                $fim = $_POST["txtFimTer"];
+
+                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                 VALUES ( '$id', 2, '$inicio', '$fim') ";
+        
+                $conexao->query($sql);
+            }
+
+            //Quarta
+            if(isset($_POST["txtQuarta"])){
+                $inicio = $_POST["txtInicioQua"];
+                $fim = $_POST["txtFimQua"];
+
+                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                 VALUES ( '$id', 3, '$inicio', '$fim') ";
+        
+                $conexao->query($sql);
+            }
+
+            //Quinta
+            if(isset($_POST["txtQuinta"])){
+                $inicio = $_POST["txtInicioQui"];
+                $fim = $_POST["txtFimQui"];
+
+                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                 VALUES ( '$id', 4, '$inicio', '$fim') ";
+        
+                $conexao->query($sql);
+            }
+
+            //Sexta
+            if(isset($_POST["txtSexta"])){
+                $inicio = $_POST["txtInicioSex"];
+                $fim = $_POST["txtFimSex"];
+
+                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                 VALUES ( '$id', 5, '$inicio', '$fim') ";
+        
+                $conexao->query($sql);
+            }
+
+            //Sábado
+            if(isset($_POST["txtSabado"])){
+                $inicio = $_POST["txtInicioSab"];
+                $fim = $_POST["txtFimSab"];
+
+                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                 VALUES ( '$id', 6, '$inicio', '$fim') ";
+        
+                $conexao->query($sql);
+            }
+
+            //Domingo
+            if(isset($_POST["txtDomingo"])){
+                $inicio = $_POST["txtInicioDom"];
+                $fim = $_POST["txtFimDom"];
+
+                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                 VALUES ( '$id', 0, '$inicio', '$fim') ";
+        
+                $conexao->query($sql);
+            }
+
             echo "<script>alert('Registro cadastrado com sucesso!');</script>";
         }else{
             echo "<script>alert('Erro ao cadastrar o registro');</script>";
