@@ -1,8 +1,8 @@
 <?php
     $servidor = 'localhost';
-    $usuario = 'root';
-    $senha = '';
-    $bd = 'lista_tel';
+    $usuario = 'u816723436_lista_tel';
+    $senha = 'fE=8Qo1H';
+    $bd = 'u816723436_lista_tel';
 
     $conexao = new mysqli($servidor, $usuario, $senha, $bd);
 
