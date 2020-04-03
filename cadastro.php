@@ -72,19 +72,19 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Nome Fantasia:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtNome" class="campo form-control">
+                                                                <input type="text" name="txtNome" class="campo form-control" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtTelefone" class="campo form-control">
+                                                                <input type="text" name="txtTelefone" class="campo form-control" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Segmento:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <select name="txtSegmento" class="campo form-control">
+                                                                <select name="txtSegmento" class="campo form-control" required>
                                                                     <?php
                                                                         $sql="SELECT * FROM segmento ORDER BY nome";
                                                             
@@ -149,13 +149,13 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">E-mail:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="email" name="txtEmail" class="campo form-control" />
+                                                                <input type="email" name="txtEmail" class="campo form-control" required/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Senha:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="password" name="txtSenha" class="campo form-control" />
+                                                                <input type="password" name="txtSenha" class="campo form-control" required/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

@@ -106,8 +106,16 @@
                                         <!-- Funcionamento -->
                                         <div class="col-xs-6">
                                             <img src="icons/clock.svg" alt="Horário" title="Horário">   
-                                            Horário de Funcionamento:<br /><br />
+                                            Horário de Funcionamento:<br />
                                             <!--Exibir os horários de funcionamento -->
+                                            <?php
+                                                $dia = ['Domingo', 'Segunda-feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
+                                                $sql = "SELECT * FROM funcionamento WHERE idcomercio = $id ORDER BY dia_semana";
+                                                $retorno = $conexao->query($sql);
+
+                                                if($retorno->num_rows > 0){
+                                            ?>
+                                            <br />
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -118,10 +126,6 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        $dia = ['Domingo', 'Segunda-feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
-                                                        $sql = "SELECT * FROM funcionamento WHERE idcomercio = $id ORDER BY dia_semana";
-                                                        $retorno = $conexao->query($sql);
-                                
                                                         while($line=$retorno->fetch_array()){
                                                     ?>
                                                     <tr>
@@ -134,16 +138,26 @@
                                                     ?>
                                                 </tbody>
                                             </table>
-
+                                            <?php
+                                                }else{
+                                                    echo "Horário não informado <br />";
+                                                }
+                                            ?>
 
                                         </div>
                                         <!-- Site -->
+                                        <?php
+                                            if(!empty(trim($linha["site"]))){
+                                        ?>
                                         <div class="col-xs-6">
                                             <img src="icons/laptop.svg" alt="Horário" title="Horário">   
                                             <?php echo '<a href="'.$linha['site'].'" target="_blank">'.$linha['site'].'</a>'; ?>
                                         </div>
+                                        <?php
+                                            }
+                                        ?>
                                         <!-- Observação -->
-                                        <?php if(isset($linha['observacao'])){ ?>
+                                        <?php if(!empty(trim($linha['observacao']))){ ?>
                                         <div class="col-xs-6">
                                             <img src="icons/chat-dots.svg" alt="Observação" title="Observação">   
                                             <?php echo $linha['observacao']; ?>
@@ -153,16 +167,28 @@
                                         <div class="col-xs-6">
                                             <!-- REDES SOCIAIS-->
                                             <ul class="list-inline">
-                                                <li class="list-inline-item">
-                                                    <a class="social-icon text-xs-center" target="_blank" href="<?php echo $linha['facebook']; ?>">
-                                                        <img src="icons/facebook.svg" alt="" width="15" height="15" title="Facebook">   
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a class="social-icon text-xs-center" target="_blank" href="<?php echo $linha['instagram']; ?>">
-                                                        <img src="icons/instagram.svg" alt="" width="15" height="15" title="Instagram">
-                                                    </a>
-                                                </li>
+                                                <?php
+                                                    if(!empty(trim($linha["facebook"]))){
+                                                ?>
+                                                    <li class="list-inline-item">
+                                                        <a class="social-icon text-xs-center" target="_blank" href="<?php echo $linha['facebook']; ?>">
+                                                            <img src="icons/facebook.svg" alt="" width="15" height="15" title="Facebook">   
+                                                        </a>
+
+                                                    </li>
+                                                <?php
+                                                    }
+
+                                                    if(!empty(trim($linha["instagram"]))){
+                                                ?>
+                                                    <li class="list-inline-item">
+                                                        <a class="social-icon text-xs-center" target="_blank" href="<?php echo $linha['instagram']; ?>">
+                                                            <img src="icons/instagram.svg" alt="" width="15" height="15" title="Instagram">
+                                                        </a>
+                                                    </li>
+                                                <?php
+                                                    }
+                                                ?>
                                             </ul>
                                             <!-- ./REDES SOCIAIS-->
                                         </div>

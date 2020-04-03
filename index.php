@@ -95,16 +95,28 @@
                                         <div class="col-xs-6">
                                             <!-- REDES SOCIAIS-->
                                             <ul class="list-inline">
+                                            <?php
+                                                if(!empty(trim($linha["facebook"]))){
+                                            ?>
                                                 <li class="list-inline-item">
                                                     <a class="social-icon text-xs-center" target="_blank" href="<?php echo $linha['facebook']; ?>">
                                                         <img src="icons/facebook.svg" alt="" width="15" height="15" title="Facebook">   
                                                     </a>
+
                                                 </li>
+                                            <?php
+                                                }
+
+                                                if(!empty(trim($linha["instagram"]))){
+                                            ?>
                                                 <li class="list-inline-item">
                                                     <a class="social-icon text-xs-center" target="_blank" href="<?php echo $linha['instagram']; ?>">
                                                         <img src="icons/instagram.svg" alt="" width="15" height="15" title="Instagram">
                                                     </a>
                                                 </li>
+                                            <?php
+                                                }
+                                            ?>
                                             </ul>
                                             <!-- ./REDES SOCIAIS-->
                                         </div>
