@@ -77,6 +77,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Nome Resposavel:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtResposavel" class="campo form-control" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <input type="text" name="txtTelefone" class="campo form-control" required>
@@ -145,18 +151,6 @@
                                                             <label class="col-sm-12 col-md-3 col-form-label">Site:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <input type="url" name="txtSite" class="campo form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">E-mail:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="email" name="txtEmail" class="campo form-control" required/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">Senha:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="password" name="txtSenha" class="campo form-control" required/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -267,8 +261,7 @@
         $bairro=$_POST["txtBairro"];
         $cep=$_POST["txtCep"];
         $site=$_POST["txtSite"];
-        $email=$_POST["txtEmail"];
-        $senha=md5($_POST["txtSenha"]);
+        $resposavel=$_POST["txtResposavel"];
         $obs=$_POST["txtObservacao"];
 
         //ARQUIVOS
@@ -288,9 +281,9 @@
             $inativo=0;
        
         $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`,
-        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `email`, `senha`, `observacao`) 
+        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `nome_responsavel`, `observacao`, usuario_idusuario) 
          VALUES ( '$nome', '$telefone', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
-        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$email', '$senha', '$obs') ";
+        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs',1) ";
 
         $conexao->query($sql);
 

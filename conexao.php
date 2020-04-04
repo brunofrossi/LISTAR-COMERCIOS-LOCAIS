@@ -1,13 +1,15 @@
 <?php
-    $servidor = 'localhost';
-    $usuario = 'u816723436_lista_tel';
-    $senha = 'fE=8Qo1H';
-    $bd = 'u816723436_lista_tel';
+   $servername = "sql185.main-hosting.eu";
+   $database = "u816723436_lista_tel";
+   $username = "u816723436_lista_tel";
+   $password = "fE=8Qo1H";
+   // Create connection
+   $conexao = mysqli_connect($servername, $username, $password, $database);
+   // Check connection
+   if (!$conexao) {
+       die("Connection failed: " . mysqli_connect_error());
+   }
+   //echo "Connected successfully";
+  // mysqli_close($conn);
+   ?>
 
-    $conexao = new mysqli($servidor, $usuario, $senha, $bd);
-
-    if(mysqli_connect_errno()){
-        echo "Erro ao conectar com o banco";
-        exit();
-    }
-?>
