@@ -22,9 +22,12 @@
         <div class="sidebar-heading cabecalho-titulo text-center">Agenda Telefônica<p class="text-right p-cadastro"></p>
         </div>
             <div class="list-group list-group-flush">
+                <a href="./register.php" class='list-group-item list-group-item-action bg-light'>Cadastrar</a>
+            </div>
+            <div class="list-group list-group-flush">
                 <a href="../index.php" class='list-group-item list-group-item-action bg-light'>Voltar</a>
             </div>
-    </div>
+        </div>
 <!-- /Menu -->
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -64,10 +67,14 @@
                                                                 <input type="password" name="txtSenha" class="campo form-control" />
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="col-xs-12">
+                                                        <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                        <label class="form-check-label" for="disabledFieldsetCheck">
+                                                        Não tem conta? <a href="./register.php">CADASTRE-SE.</a> 
+                                                            </label><br>
                                                             <input type="submit" value="Logar" name="btGravar" class="btn btn-primary" >
-                                                        <br><br><br>
+                                                        </div>
+                                                        
                                                         </div>
                                                     </div>  
                                                 </form>

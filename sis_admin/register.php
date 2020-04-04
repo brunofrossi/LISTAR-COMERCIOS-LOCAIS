@@ -102,25 +102,27 @@
     if(isset($_POST["btGravar"])){
         $email=$_POST["txtEmail"];
         $senha=md5($_POST["txtSenha"]);
-        $Csenha=$_POST["txtCSenha"];
+        $Csenha=md5($_POST["txtCSenha"]);
 
-        
-        if(isset($_POST["txtInativo"]))
-            $inativo=$_POST["txtInativo"];
-        else
-            $inativo=0;
+        var_dump($senha, $Csenha);
+        if(isset($senha)and isset($Csenha))
+            if ($senha == $Csenha) {
+                $sql="INSERT INTO `usuario` (`email`, `senha`) VALUES ('$email', '$senha') ";
+                $conexao->query($sql);
+                if($conexao->errno == 0){
+                        $id = $conexao->insert_id;
+                        echo "<script>alert('Registro cadastrado com sucesso!');</script>";
+                       echo"<script>javascript:history.back(-3)</script>";
+                       
+                    }else{
+                        echo "<script>alert('Erro ao cadastrar o registro');</script>";
+                    }
+            }else{
+                echo "<script>alert('Senha não compatível');</script>";
+            }
+                   
        
-        $sql="INSERT INTO `comercio` (`email`, `senha`) 
-         VALUES ('$email', '$senha') ";
-
-        $conexao->query($sql);
-
-        if($conexao->errno == 0){
-            $id = $conexao->insert_id;
-            echo "<script>alert('Registro cadastrado com sucesso!');</script>";
-        }else{
-            echo "<script>alert('Erro ao cadastrar o registro');</script>";
-        }
+       
     }
 ?>
 
