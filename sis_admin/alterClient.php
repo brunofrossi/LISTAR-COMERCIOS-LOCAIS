@@ -9,6 +9,20 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
   }
 
   $id = $_SESSION['id'];
+  
+  //Capturar o valor da chave do comércio
+  if(isset($_GET["id"])){
+    $idcomercio = $_GET["id"];
+    $sql="SELECT * FROM comercio WHERE idcomercio = $idcomercio";
+    $retorno = $conexao->query($sql);
+    if($retorno->num_rows==1){
+        $line=$retorno->fetch_array();
+    }else{
+        header("location: systemHome.php");    
+    }
+  }else{
+    header("location: systemHome.php");
+  }
 
 ?>
 
@@ -63,26 +77,37 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Nome Fantasia:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtNome" class="campo form-control">
+                                                                <input type="text" name="txtNome" class="campo form-control" required value="<?php echo $line["nome_fantasia"]; ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Nome Resposavel:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtResposavel" class="campo form-control" required value="<?php echo $line["nome_responsavel"]; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtTelefone" class="campo form-control">
+                                                                <input type="text" name="txtTelefone" class="campo form-control" required value="<?php echo $line["telefone"]; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Segmento:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <select name="txtSegmento" class="campo form-control">
+                                                                <select name="txtSegmento" class="campo form-control" required>
                                                                     <?php
                                                                         $sql="SELECT * FROM segmento ORDER BY nome";
                                                             
                                                                         $resultado= $conexao->query($sql);
                                                                         if($resultado->num_rows > 0){
                                                                             while($linha=$resultado->fetch_array()){
-                                                                                echo "<option value='".$linha["idsegmento"]."'>".$linha["nome"]."</option>";
+                                                                                //verificar o segmento que foi cadastrado
+                                                                                if($linha["idsegmento"] == $line["segmento_idsegmento"]){
+                                                                                    echo "<option value='".$linha["idsegmento"]."' selected>".$linha["nome"]."</option>";
+                                                                                }else{
+                                                                                    echo "<option value='".$linha["idsegmento"]."'>".$linha["nome"]."</option>";
+                                                                                }
                                                                             }
                                                                         }
                                                                     ?>
@@ -92,61 +117,49 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Logradouro:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtLogradouro" class="campo form-control" />
+                                                                <input type="text" name="txtLogradouro" class="campo form-control" value="<?php echo $line["rua"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Número:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtNumero" class="campo form-control" />
+                                                                <input type="text" name="txtNumero" class="campo form-control" value="<?php echo $line["numero"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Complemento:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtComplemento" class="campo form-control" />
+                                                                <input type="text" name="txtComplemento" class="campo form-control" value="<?php echo $line["complemento"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Bairro:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtBairro" class="campo form-control" />
+                                                                <input type="text" name="txtBairro" class="campo form-control" value="<?php echo $line["bairro"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">CEP:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtCep" class="campo form-control" />
+                                                                <input type="text" name="txtCep" class="campo form-control" value="<?php echo $line["CEP"]; ?>" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Facebook:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="url" name="txtFacebook" class="campo form-control" />
+                                                                <input type="url" name="txtFacebook" class="campo form-control" value="<?php echo $line["facebook"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Instagram:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="url" name="txtInstagram" class="campo form-control" />
+                                                                <input type="url" name="txtInstagram" class="campo form-control" value="<?php echo $line["instagram"]; ?>" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Site:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="url" name="txtSite" class="campo form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">E-mail:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="email" name="txtEmail" class="campo form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">Senha:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="password" name="txtSenha" class="campo form-control" />
+                                                                <input type="url" name="txtSite" class="campo form-control" value="<?php echo $line["site"]; ?>" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -158,7 +171,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Observação:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <textarea name="txtObservacao" class="campo form-control" ></textarea>
+                                                                <textarea name="txtObservacao" class="campo form-control" ><?php echo $line["observacao"]; ?></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -257,31 +270,24 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
         $bairro=$_POST["txtBairro"];
         $cep=$_POST["txtCep"];
         $site=$_POST["txtSite"];
-        $email=$_POST["txtEmail"];
-        $senha=md5($_POST["txtSenha"]);
+        $resposavel=$_POST["txtResposavel"];
         $obs=$_POST["txtObservacao"];
-
-        //ARQUIVOS
-        $imagemTmp=$_FILES["txtImagem"]["tmp_name"];
-        $imagem=date("dmyHis").$_FILES["txtImagem"]["name"];
 
         //enviar a imagem
         if($_FILES["txtImagem"]["error"]!=0){
-            echo "Não foi possível cadastrar o produto, erro na imagem";
-            exit;
+            $imagem = $line["imagem"];
+        }else{
+            //ARQUIVOS
+            $imagemTmp=$_FILES["txtImagem"]["tmp_name"];
+            $imagem=date("dmyHis").$_FILES["txtImagem"]["name"];
+            move_uploaded_file($imagemTmp, "images/".$imagem);
         }
 
-        move_uploaded_file($imagemTmp, "images/".$imagem);
-
-        if(isset($_POST["txtInativo"]))
-            $inativo=$_POST["txtInativo"];
-        else
-            $inativo=0;
-       
-        $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`,
-        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `email`, `senha`, `observacao`) 
-         VALUES ( '$nome', '$telefone', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
-        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$email', '$senha', '$obs') ";
+        //Query Atualizar
+        $sql="UPDATE `comercio` SET  `nome_fantasia` = '$nome', `telefone` = '$telefone', `instagram` = '$instagram', `facebook` = '$facebook', 
+        `segmento_idsegmento` = $idsegmento, `rua` = '$rua', `numero` = '$numero', `complemento` = '$complemento', `bairro` = '$bairro', 
+        `CEP` = '$cep', `site` = '$site', `imagem` = '$imagem', `nome_responsavel` = '$resposavel', `observacao` = '$obs' 
+        WHERE idcomercio = $idcomercio";
 
         $conexao->query($sql);
 
