@@ -94,11 +94,6 @@
                                             <img src="icons/phone.svg" alt="Telephone" title="Telephone">   
                                             <?php echo $linha['telefone']; ?>
                                         </div>
-                                        <!-- Telefone -->
-                                        <div class="col-xs-6">
-                                            <img src="icons/envelope.svg" alt="E-mail" title="E-mail">   
-                                            <?php echo $linha['email']; ?>
-                                        </div>
                                         <!-- Endereço -->
                                         <div class="col-xs-6">
                                         <img src="icons/geo-alt.svg" alt="Endereço" title="Endereço">
@@ -111,12 +106,11 @@
                                             <!--Exibir os horários de funcionamento -->
                                             <?php
                                                 $dia = ['Domingo', 'Segunda-feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
-                                                $sql = "SELECT * FROM funcionamento WHERE idcomercio = $id ORDER BY dia_semana";
+                                                $sql = "SELECT * FROM funcionamento WHERE comercio_idcomercio = $id ORDER BY dia_semana";
                                                 $retorno = $conexao->query($sql);
-
-                                                if($retorno->num_rows > 0){
+                                                if($retorno->num_rows>0){
                                             ?>
-                                            <br />
+                                            <br>
                                             <table class="table">
                                                 <thead>
                                                     <tr>

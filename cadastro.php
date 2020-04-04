@@ -296,7 +296,7 @@
                 $inicio = $_POST["txtInicioSeg"];
                 $fim = $_POST["txtFimSeg"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 1, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -307,7 +307,7 @@
                 $inicio = $_POST["txtInicioTer"];
                 $fim = $_POST["txtFimTer"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 2, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -318,7 +318,7 @@
                 $inicio = $_POST["txtInicioQua"];
                 $fim = $_POST["txtFimQua"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 3, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -329,7 +329,7 @@
                 $inicio = $_POST["txtInicioQui"];
                 $fim = $_POST["txtFimQui"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 4, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -340,7 +340,7 @@
                 $inicio = $_POST["txtInicioSex"];
                 $fim = $_POST["txtFimSex"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 5, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -351,7 +351,7 @@
                 $inicio = $_POST["txtInicioSab"];
                 $fim = $_POST["txtFimSab"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 6, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -362,7 +362,7 @@
                 $inicio = $_POST["txtInicioDom"];
                 $fim = $_POST["txtFimDom"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 0, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
