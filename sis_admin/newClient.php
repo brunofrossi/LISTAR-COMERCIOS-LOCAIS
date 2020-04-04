@@ -1,5 +1,15 @@
 <?php
     include '../conexao.php';
+    session_start();
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  header('location:index.php');
+  }
+
+  $idUsuario = $_SESSION['id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -46,26 +56,32 @@
                                     <div class="card-body text-center">
                                         <div class="col-xs-6">
 
-                                            <!-- FORMULÁRIO -->
-                                            <div id="formulario-cadastro">
+                                              <!-- FORMULÁRIO -->
+                                              <div id="formulario-cadastro">
                                                 <form method="POST" enctype="multipart/form-data">
                                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Nome Fantasia:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtNome" class="campo form-control">
+                                                                <input type="text" name="txtNome" class="campo form-control" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Nome Resposavel:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtResposavel" class="campo form-control" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtTelefone" class="campo form-control">
+                                                                <input type="text" name="txtTelefone" class="campo form-control" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Segmento:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <select name="txtSegmento" class="campo form-control">
+                                                                <select name="txtSegmento" class="campo form-control" required>
                                                                     <?php
                                                                         $sql="SELECT * FROM segmento ORDER BY nome";
                                                             
@@ -125,18 +141,6 @@
                                                             <label class="col-sm-12 col-md-3 col-form-label">Site:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <input type="url" name="txtSite" class="campo form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">E-mail:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="email" name="txtEmail" class="campo form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">Senha:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="password" name="txtSenha" class="campo form-control" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -247,8 +251,7 @@
         $bairro=$_POST["txtBairro"];
         $cep=$_POST["txtCep"];
         $site=$_POST["txtSite"];
-        $email=$_POST["txtEmail"];
-        $senha=md5($_POST["txtSenha"]);
+        $resposavel=$_POST["txtResposavel"];
         $obs=$_POST["txtObservacao"];
 
         //ARQUIVOS
@@ -257,11 +260,10 @@
 
         //enviar a imagem
         if($_FILES["txtImagem"]["error"]!=0){
-            echo "Não foi possível cadastrar o produto, erro na imagem";
-            exit;
+            $imagem = "shop_379425.png";
+        }else{
+            move_uploaded_file($imagemTmp, "images/".$imagem);
         }
-
-        move_uploaded_file($imagemTmp, "images/".$imagem);
 
         if(isset($_POST["txtInativo"]))
             $inativo=$_POST["txtInativo"];
@@ -269,9 +271,9 @@
             $inativo=0;
        
         $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`,
-        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `email`, `senha`, `observacao`) 
+        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `nome_responsavel`, `observacao`, usuario_idusuario) 
          VALUES ( '$nome', '$telefone', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
-        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$email', '$senha', '$obs') ";
+        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs',$idUsuario) ";
 
         $conexao->query($sql);
 
@@ -284,7 +286,7 @@
                 $inicio = $_POST["txtInicioSeg"];
                 $fim = $_POST["txtFimSeg"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 1, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -295,7 +297,7 @@
                 $inicio = $_POST["txtInicioTer"];
                 $fim = $_POST["txtFimTer"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 2, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -306,7 +308,7 @@
                 $inicio = $_POST["txtInicioQua"];
                 $fim = $_POST["txtFimQua"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 3, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -317,7 +319,7 @@
                 $inicio = $_POST["txtInicioQui"];
                 $fim = $_POST["txtFimQui"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 4, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -328,7 +330,7 @@
                 $inicio = $_POST["txtInicioSex"];
                 $fim = $_POST["txtFimSex"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 5, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -339,7 +341,7 @@
                 $inicio = $_POST["txtInicioSab"];
                 $fim = $_POST["txtFimSab"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 6, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
@@ -350,7 +352,7 @@
                 $inicio = $_POST["txtInicioDom"];
                 $fim = $_POST["txtFimDom"];
 
-                $sql="INSERT INTO `funcionamento` ( `idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
+                $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$id', 0, '$inicio', '$fim') ";
         
                 $conexao->query($sql);

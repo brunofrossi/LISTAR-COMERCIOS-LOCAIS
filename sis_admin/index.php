@@ -1,5 +1,6 @@
 <?php
     include '../conexao.php';
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +54,7 @@
 
                                             <!-- FORMULÁRIO -->
                                             <div id="formulario-cadastro">
-                                                <form method="POST" action="systemHome.php">
+                                                <form method="POST"  enctype="multipart/form-data">
                                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">E-mail:</label>
@@ -72,7 +73,7 @@
                                                         <label class="form-check-label" for="disabledFieldsetCheck">
                                                         Não tem conta? <a href="./register.php">CADASTRE-SE.</a> 
                                                             </label><br>
-                                                            <input type="submit" value="Logar" name="btGravar" class="btn btn-primary" >
+                                                            <input type="submit" value="Logar" name="btLogar" class="btn btn-primary" >
                                                         </div>
                                                         
                                                         </div>
@@ -100,6 +101,52 @@
     </div>
     <!-- /#page-content-wrapper -->
 </div>
+
+<!-- validação de dados -->
+
+<?php
+    if(isset($_POST["btLogar"])){
+        $email=$_POST["txtEmail"];
+        $senha=$_POST["txtSenha"];
+
+        if(isset($email)and isset($senha)){
+            $senha=md5($senha);
+           $sql="SELECT idusuario FROM usuario WHERE email='$email' and senha='$senha'";
+           $retorno = $conexao->query($sql);
+           if($retorno->num_rows>0){
+            $line=$retorno->fetch_array();
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
+            $_SESSION['id'] = $line['idusuario'];            
+            echo "<script>document.location='systemHome.php'</script>";
+           
+            }else{
+            echo "<script>alert('Usuário ou senha incorreto');</script>";
+            }
+        }else{
+            echo "<script>alert('Usuário ou senha incorreto');</script>";
+            }
+    }
+?>
+
+<!--Script-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--Script-->

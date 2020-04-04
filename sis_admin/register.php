@@ -112,7 +112,7 @@
                 if($conexao->errno == 0){
                         $id = $conexao->insert_id;
                         echo "<script>alert('Registro cadastrado com sucesso!');</script>";
-                       echo"<script>javascript:history.back(-3)</script>";
+                        echo "<script>document.location='index.php'</script>";
                        
                     }else{
                         echo "<script>alert('Erro ao cadastrar o registro');</script>";
