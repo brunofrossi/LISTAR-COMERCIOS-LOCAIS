@@ -188,7 +188,7 @@ if(isset($_GET["id"])){
     
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom bg-sup">
         <button class="btn btn-primary bt-menu" id="menu-toggle">
-            <img src="icons/chevron-right.svg" alt="" width="24" height="24" title="Facebook">
+            <img src="icons/list.svg" alt="" width="24" height="24" title="Facebook">
         </button>
         <span class="navbar-text text-center nome-sup"> Cadastrar Empresa </span>
       </nav>
