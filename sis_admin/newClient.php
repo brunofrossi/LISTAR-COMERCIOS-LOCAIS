@@ -40,6 +40,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
             <img src="icons/list.svg" alt="" width="24" height="24" title="Facebook">
         </button>
         <span class="navbar-text text-center nome-sup"> Cadastrar Empresa </span>
+        <div class="d-flex justify-content-end sair-bt">
+            <a href="sair.php" class="btn btn-danger">Sair</a>
+        </div>
       </nav>
 
       <div class="container-fluid">

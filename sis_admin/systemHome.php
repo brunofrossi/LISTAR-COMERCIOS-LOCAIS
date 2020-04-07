@@ -39,6 +39,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
             <button class="btn btn-primary bt-menu" id="menu-toggle">
                 <img src="icons/list.svg" alt="" width="24" height="24" title="Facebook">
             </button>
+            <div class="d-flex justify-content-end sair-bt">
+                <a href="sair.php" class="btn btn-danger">Sair</a>
+            </div>
         </nav>
 
       <div class="container-fluid">

@@ -44,3 +44,8 @@
 .p-cadastro{
     margin: 0 -10px -10px 0;
 }
+
+.sair-bt{
+    position: absolute !important;
+    right: 10px !important;
+}
