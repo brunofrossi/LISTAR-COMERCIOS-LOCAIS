@@ -49,7 +49,7 @@ if(isset($_GET["id"])){
             //ARQUIVOS
             $imagemTmp=$_FILES["txtImagem"]["tmp_name"];
             $imagem=date("dmyHis").$_FILES["txtImagem"]["name"];
-            move_uploaded_file($imagemTmp, "images/".$imagem);
+            move_uploaded_file($imagemTmp, "../images/".$imagem);
 
             //Query Atualizar
             $sql="UPDATE `comercio` SET  `nome_fantasia` = '$nome', `telefone` = '$telefone', `instagram` = '$instagram', `facebook` = '$facebook', 

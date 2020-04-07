@@ -265,7 +265,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
         if($_FILES["txtImagem"]["error"]!=0){
             $imagem = "shop_379425.png";
         }else{
-            move_uploaded_file($imagemTmp, "images/".$imagem);
+            move_uploaded_file($imagemTmp, "../images/".$imagem);
         }
 
         if(isset($_POST["txtInativo"]))
