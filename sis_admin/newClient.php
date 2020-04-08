@@ -135,6 +135,13 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Whatsapp:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtWhatsapp" class="campo form-control" >
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Facebook:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <input type="url" name="txtFacebook" class="campo form-control" />
@@ -283,6 +290,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
         $pagamento =$_POST["txtPagamento"];
         $taxa =$_POST["txtTaxa"];
         $Negocio =$_POST["txtNegocio"];
+        $Whatsapp=$_POST["txtWhatsapp"];
 
         //ARQUIVOS
         $imagemTmp=$_FILES["txtImagem"]["tmp_name"];
@@ -302,9 +310,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
             
        
         $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`,
-        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `nome_responsavel`, `observacao`, usuario_idusuario,`descricao_negocio`,`taxa_entrega`,`forma_pagamento`) 
+        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `nome_responsavel`, `observacao`, usuario_idusuario,`descricao_negocio`,`taxa_entrega`,`forma_pagamento`,`Whatsapp`) 
          VALUES ( '$nome', '$telefone', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
-        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs',$idUsuario,'$Negocio','$taxa','$pagamento') ";
+        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs',$idUsuario,'$Negocio','$taxa','$pagamento',$Whatsapp ) ";
        
         $conexao->query($sql);
 
