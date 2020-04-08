@@ -17,7 +17,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Telefônica</title>
+    <title>Kta em Casa</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="css/simple-sidebar.css" rel="stylesheet" id="sidebar-css">
     <link href="css/style.css" rel="stylesheet" id="style">
@@ -72,13 +72,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Nome Resposavel:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtResposavel" class="campo form-control" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtTelefone" class="campo form-control" required>
+                                                                <input type="text" name="txtResposavel" class="campo form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -96,6 +90,12 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                                         }
                                                                     ?>
                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Descrição do Negócio:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtNegocio" class="campo form-control" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -129,6 +129,12 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtTelefone" class="campo form-control" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Facebook:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <input type="url" name="txtFacebook" class="campo form-control" />
@@ -153,6 +159,24 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Taxa de Entrega:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtTaxa" class="campo form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Forma de Pagamento:</label>
+                                                                <div class="col-sm-12 col-md-9">
+                                                                    <select name="txtPagamento" class="campo form-control" required>
+                                                                        <option value='Dinheiro'>Dinheiro</option>";
+                                                                        <option value='Cartão'>Cartão</option>";
+                                                                        <option value='Dinheiro e Cartão'>Dinheiro e Cartão</option>";
+                                                                            
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        <div class="form-group row">
+                                                        
                                                             <label class="col-sm-12 col-md-3 col-form-label">Observação:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <textarea name="txtObservacao" class="campo form-control" ></textarea>
@@ -174,38 +198,38 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="segunda" value="1" name="txtSegunda"><label class="form-check-label" for="segunda">Segunda-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioSeg" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioSeg" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimSeg" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="terca" value="2" name="txtTerca"><label class="form-check-label" for="terca">Terça-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioTer" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimTer" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioTer" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimTer" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quarta" value="3" name="txtQuarta"><label class="form-check-label" for="quarta">Quarta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioQua" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimQua" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioQua" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimQua" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quinta" value="4" name="txtQuinta"><label class="form-check-label" for="quinta">Quinta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioQui" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimQui" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioQui" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimQui" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sexta" value="5" name="txtSexta"><label class="form-check-label" for="sexta">Sexta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioSex" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSex" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioSex" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimSex" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sabado" value="6" name="txtSabado"><label class="form-check-label" for="sabado">Sábado</label></td>
-                                                                                <td><input type="text" name="txtInicioSab" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSab" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioSab" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimSab" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="domingo" value="0" name="txtDomingo"><label class="form-check-label" for="domingo">Domingo</label></td>
-                                                                                <td><input type="text" name="txtInicioDom" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimDom" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioDom" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimDom" class="campo form-control" /></td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -256,6 +280,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
         $site=$_POST["txtSite"];
         $resposavel=$_POST["txtResposavel"];
         $obs=$_POST["txtObservacao"];
+        $pagamento =$_POST["txtPagamento"];
+        $taxa =$_POST["txtTaxa"];
+        $Negocio =$_POST["txtNegocio"];
 
         //ARQUIVOS
         $imagemTmp=$_FILES["txtImagem"]["tmp_name"];
@@ -272,12 +299,13 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
             $inativo=$_POST["txtInativo"];
         else
             $inativo=0;
+            
        
         $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`,
-        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `nome_responsavel`, `observacao`, usuario_idusuario) 
+        `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `nome_responsavel`, `observacao`, usuario_idusuario,`descricao_negocio`,`taxa_entrega`,`forma_pagamento`) 
          VALUES ( '$nome', '$telefone', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
-        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs',$idUsuario) ";
-
+        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs',$idUsuario,'$Negocio','$taxa','$pagamento') ";
+       
         $conexao->query($sql);
 
         if($conexao->errno == 0){
