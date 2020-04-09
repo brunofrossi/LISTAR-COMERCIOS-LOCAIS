@@ -85,7 +85,7 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class="img-fluid" src='<?php echo "images/".$linha['imagem']; ?>' height="100" alt="card image"></p>
+                                        <p><img class="img-fluid" src='<?php echo "images/".$linha['imagem']; ?>' width="100vw" alt="card image"></p>
                                         <h4 class="card-title">
                                             <?php echo $linha['nome_fantasia']; ?>
                                         </h4>

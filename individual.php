@@ -85,10 +85,19 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class="img-fluid" src='<?php echo "images/".$linha['imagem']; ?>' height="100" alt="card image"></p>
+                                        <!-- logo -->
+                                        <img class="img-fluid" src='<?php echo "images/".$linha['imagem']; ?>' width="300vw" alt="card image">
                                         <h4 class="card-title">
                                             <?php echo $linha['nome_fantasia']; ?>
                                         </h4>
+                                        <div class="col-xs-6">
+                                            <?php echo $linha['descricao_negocio']; ?>
+                                        </div>
+                                        <!-- Whatsapp -->
+                                        <div class="col-xs-6">
+                                            <img src="icons/whatsapp.svg" alt="whatsapp" title="whatsapp">   
+                                            <?php echo $linha['Whatsapp']; ?>
+                                        </div>
                                         <!-- Telefone -->
                                         <div class="col-xs-6">
                                             <img src="icons/phone.svg" alt="Telephone" title="Telephone">   
@@ -96,12 +105,22 @@
                                         </div>
                                         <!-- Endereço -->
                                         <div class="col-xs-6">
-                                        <img src="icons/geo-alt.svg" alt="Endereço" title="Endereço">
+                                        <img src="icons/location.svg" alt="Endereço" title="Endereço">
                                             <?php echo $linha['rua'].", ".$linha['numero']." - ".$linha['bairro']; ?>
+                                        </div>
+                                        <!-- Pagamento -->
+                                        <div class="col-xs-6">
+                                            <img src="icons/banknote.svg" alt="Forma Pagamento" title="Forma Pagamento">   
+                                            Forma Pagamento: <?php echo $linha['forma_pagamento']; ?>
+                                        </div>
+                                        <!-- Taxa -->
+                                        <div class="col-xs-6">
+                                            <img src="icons/product.svg" alt="taxa de entrega" title="taxa de entrega">   
+                                            Taxa de Entrega:<?php echo $linha['taxa_entrega']; ?>
                                         </div>
                                         <!-- Funcionamento -->
                                         <div class="col-xs-6">
-                                            <img src="icons/clock.svg" alt="Horário" title="Horário">   
+                                            <img src="icons/time.svg" alt="Horário" title="Horário">   
                                             Horário de Funcionamento:<br />
                                             <!--Exibir os horários de funcionamento -->
                                             <?php
@@ -154,7 +173,7 @@
                                         <!-- Observação -->
                                         <?php if(!empty(trim($linha['observacao']))){ ?>
                                         <div class="col-xs-6">
-                                            <img src="icons/chat-dots.svg" alt="Observação" title="Observação">   
+                                            <img src="icons/bubble.svg" alt="Observação" title="Observação">   
                                             <?php echo $linha['observacao']; ?>
                                         </div>
                                         <?php } ?>
