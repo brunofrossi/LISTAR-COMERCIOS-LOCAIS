@@ -37,13 +37,17 @@ if(isset($_GET["id"])){
         $site=$_POST["txtSite"];
         $resposavel=$_POST["txtResposavel"];
         $obs=$_POST["txtObservacao"];
+        $pagamento =$_POST["txtPagamento"];
+        $taxa =$_POST["txtTaxa"];
+        $Negocio =$_POST["txtNegocio"];
+        $Whatsapp=$_POST["txtWhatsapp"];
 
         //enviar a imagem
         if($_FILES["txtImagem"]["error"]!=0){
             //Query Atualizar
             $sql="UPDATE `comercio` SET  `nome_fantasia` = '$nome', `telefone` = '$telefone', `instagram` = '$instagram', `facebook` = '$facebook', 
             `segmento_idsegmento` = $idsegmento, `rua` = '$rua', `numero` = '$numero', `complemento` = '$complemento', `bairro` = '$bairro', 
-            `CEP` = '$cep', `site` = '$site', `nome_responsavel` = '$resposavel', `observacao` = '$obs' 
+            `CEP` = '$cep', `site` = '$site', `nome_responsavel` = '$resposavel', `observacao` = '$obs', `forma_pagamento`='$pagamento',`taxa_entrega`='$taxa',`descricao_negocio`='$Negocio', `Whatsapp`='$Whatsapp'
             WHERE idcomercio = $idcomercio";
         }else{
             //ARQUIVOS
@@ -54,7 +58,7 @@ if(isset($_GET["id"])){
             //Query Atualizar
             $sql="UPDATE `comercio` SET  `nome_fantasia` = '$nome', `telefone` = '$telefone', `instagram` = '$instagram', `facebook` = '$facebook', 
             `segmento_idsegmento` = $idsegmento, `rua` = '$rua', `numero` = '$numero', `complemento` = '$complemento', `bairro` = '$bairro', 
-            `CEP` = '$cep', `site` = '$site', `imagem` = '$imagem', `nome_responsavel` = '$resposavel', `observacao` = '$obs' 
+            `CEP` = '$cep', `site` = '$site', `imagem` = '$imagem', `nome_responsavel` = '$resposavel', `observacao` = '$obs' , `forma_pagamento`='$pagamento',`taxa_entrega`='$taxa',`descricao_negocio`='$Negocio', `Whatsapp`='$Whatsapp'
             WHERE idcomercio = $idcomercio";
         }
 
@@ -74,9 +78,6 @@ if(isset($_GET["id"])){
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
                  VALUES ( '$idcomercio', 1, '$inicio', '$fim') ";
-
-                echo $sql;
-
                 $conexao->query($sql);
             }
 
@@ -217,19 +218,13 @@ if(isset($_GET["id"])){
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Nome Fantasia:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtNome" class="campo form-control" required value="<?php echo $line["nome_fantasia"]; ?>">
+                                                                <input type="text" name="txtNome" class="campo form-control" required value="<?php echo $line["nome_fantasia"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Nome Resposavel:</label>
                                                             <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtResposavel" class="campo form-control" required value="<?php echo $line["nome_responsavel"]; ?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
-                                                            <div class="col-sm-12 col-md-9">
-                                                                <input type="text" name="txtTelefone" class="campo form-control" required value="<?php echo $line["telefone"]; ?>">
+                                                                <input type="text" name="txtResposavel" class="campo form-control" required value="<?php echo $line["nome_responsavel"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -252,6 +247,12 @@ if(isset($_GET["id"])){
                                                                         }
                                                                     ?>
                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Descrição do Negócio:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtNegocio" class="campo form-control" required value="<?php echo $line["descricao_negocio"]; ?>"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -285,6 +286,18 @@ if(isset($_GET["id"])){
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Telefone:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtTelefone" class="campo form-control" required value="<?php echo $line["telefone"]; ?>"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Whatsapp:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtWhatsapp" class="campo form-control" value="<?php echo $line["Whatsapp"];?>"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Facebook:</label>
                                                             <div class="col-sm-12 col-md-9">
                                                                 <input type="url" name="txtFacebook" class="campo form-control" value="<?php echo $line["facebook"]; ?>"/>
@@ -308,6 +321,23 @@ if(isset($_GET["id"])){
                                                                 <input type="file" name="txtImagem" class="campo form-control" />
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Taxa de Entrega:</label>
+                                                            <div class="col-sm-12 col-md-9">
+                                                                <input type="text" name="txtTaxa" class="campo form-control" value="<?php echo $line["taxa_entrega"];?>"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-12 col-md-3 col-form-label">Forma de Pagamento:</label>
+                                                                <div class="col-sm-12 col-md-9">
+                                                                    <select name="txtPagamento" class="campo form-control" required>
+                                                                        <option value='Dinheiro'>Dinheiro</option>";
+                                                                        <option value='Cartão'>Cartão</option>";
+                                                                        <option value='Dinheiro e Cartão'>Dinheiro e Cartão</option>";
+                                                                            
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-12 col-md-3 col-form-label">Observação:</label>
                                                             <div class="col-sm-12 col-md-9">
@@ -343,8 +373,8 @@ if(isset($_GET["id"])){
                                                                             <?php if(@$linha2["dia_semana"]==0){ ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="domingo" value="0" name="txtDomingo" checked="true"><label class="form-check-label" for="domingo">Domingo</label></td>
-                                                                                <td><input type="text" name="txtInicioDom" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
-                                                                                <td><input type="text" name="txtFimDom" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
+                                                                                <td><input type="time" name="txtInicioDom" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
+                                                                                <td><input type="time" name="txtFimDom" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
                                                                             </tr>
                                                                             <?php 
                                                                                 $linha2=$resultado->fetch_array();
@@ -352,8 +382,8 @@ if(isset($_GET["id"])){
                                                                             ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="domingo" value="0" name="txtDomingo"><label class="form-check-label" for="domingo">Domingo</label></td>
-                                                                                <td><input type="text" name="txtInicioDom" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimDom" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioDom" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimDom" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <?php } ?>
                                                                             <!-- ./Domingo -->
@@ -361,8 +391,8 @@ if(isset($_GET["id"])){
                                                                             <?php if(@$linha2["dia_semana"]==1){  ?>
                                                                                 <tr>
                                                                                     <td class="text-left"><input class="form-check-input" type="checkbox" id="segunda" value="1" name="txtSegunda" checked="true"><label class="form-check-label" for="segunda">Segunda-Feira</label></td>
-                                                                                    <td><input type="text" name="txtInicioSeg" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
-                                                                                    <td><input type="text" name="txtFimSeg" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
+                                                                                    <td><input type="time" name="txtInicioSeg" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
+                                                                                    <td><input type="time" name="txtFimSeg" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
                                                                                 </tr>
                                                                             <?php 
                                                                                 $linha2=$resultado->fetch_array();
@@ -370,8 +400,8 @@ if(isset($_GET["id"])){
                                                                             ?>
                                                                                 <tr>
                                                                                     <td class="text-left"><input class="form-check-input" type="checkbox" id="segunda" value="1" name="txtSegunda"><label class="form-check-label" for="segunda">Segunda-Feira</label></td>
-                                                                                    <td><input type="text" name="txtInicioSeg" class="campo form-control" /></td>
-                                                                                    <td><input type="text" name="txtFimSeg" class="campo form-control" /></td>
+                                                                                    <td><input type="time" name="txtInicioSeg" class="campo form-control" /></td>
+                                                                                    <td><input type="time" name="txtFimSeg" class="campo form-control" /></td>
                                                                                 </tr>
                                                                             <?php } ?>
                                                                             <!-- ./Segunda -->
@@ -379,8 +409,8 @@ if(isset($_GET["id"])){
                                                                             <?php if(@$linha2["dia_semana"]==2){ ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="terca" value="2" name="txtTerca" checked="true"><label class="form-check-label" for="terca">Terça-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioTer" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
-                                                                                <td><input type="text" name="txtFimTer" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
+                                                                                <td><input type="time" name="txtInicioTer" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
+                                                                                <td><input type="time" name="txtFimTer" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
                                                                             </tr>
                                                                             <?php 
                                                                                 $linha2=$resultado->fetch_array();
@@ -388,8 +418,8 @@ if(isset($_GET["id"])){
                                                                             ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="terca" value="2" name="txtTerca"><label class="form-check-label" for="terca">Terça-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioTer" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimTer" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioTer" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimTer" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <?php } ?>
                                                                             <!-- ./Terça -->
@@ -397,8 +427,8 @@ if(isset($_GET["id"])){
                                                                             <?php if(@$linha2["dia_semana"]==3){ ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quarta" value="3" name="txtQuarta" checked="true"><label class="form-check-label" for="quarta">Quarta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioQua" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
-                                                                                <td><input type="text" name="txtFimQua" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
+                                                                                <td><input type="time" name="txtInicioQua" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
+                                                                                <td><input type="time" name="txtFimQua" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
                                                                             </tr>
                                                                             <?php 
                                                                                 $linha2=$resultado->fetch_array();
@@ -406,8 +436,8 @@ if(isset($_GET["id"])){
                                                                             ?>
                                                                                 <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quarta" value="3" name="txtQuarta"><label class="form-check-label" for="quarta">Quarta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioQua" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimQua" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioQua" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimQua" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <?php } ?>
                                                                             <!-- ./Quarta -->
@@ -415,8 +445,8 @@ if(isset($_GET["id"])){
                                                                             <?php if(@$linha2["dia_semana"]==4){ ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quinta" value="4" name="txtQuinta" checked="true"><label class="form-check-label" for="quinta">Quinta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioQui" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
-                                                                                <td><input type="text" name="txtFimQui" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
+                                                                                <td><input type="time" name="txtInicioQui" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
+                                                                                <td><input type="time" name="txtFimQui" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
                                                                             </tr>
                                                                             <?php 
                                                                                 $linha2=$resultado->fetch_array();
@@ -424,8 +454,8 @@ if(isset($_GET["id"])){
                                                                             ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="quinta" value="4" name="txtQuinta"><label class="form-check-label" for="quinta">Quinta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioQui" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimQui" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioQui" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimQui" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <?php } ?>
                                                                             <!-- ./Quinta -->
@@ -433,8 +463,8 @@ if(isset($_GET["id"])){
                                                                             <?php if(@$linha2["dia_semana"]==5){ ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sexta" value="5" name="txtSexta" checked="true"><label class="form-check-label" for="sexta">Sexta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioSex" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
-                                                                                <td><input type="text" name="txtFimSex" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
+                                                                                <td><input type="time" name="txtInicioSex" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
+                                                                                <td><input type="time" name="txtFimSex" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
                                                                             </tr>
                                                                             <?php 
                                                                                 $linha2=$resultado->fetch_array();
@@ -442,8 +472,8 @@ if(isset($_GET["id"])){
                                                                             ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sexta" value="5" name="txtSexta"><label class="form-check-label" for="sexta">Sexta-Feira</label></td>
-                                                                                <td><input type="text" name="txtInicioSex" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSex" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioSex" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimSex" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <?php } ?>
                                                                             <!-- ./Sexta -->
@@ -451,8 +481,8 @@ if(isset($_GET["id"])){
                                                                             <?php if(@$linha2["dia_semana"]==6){ ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sabado" value="6" name="txtSabado" checked="true"><label class="form-check-label" for="sabado">Sábado</label></td>
-                                                                                <td><input type="text" name="txtInicioSab" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
-                                                                                <td><input type="text" name="txtFimSab" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
+                                                                                <td><input type="time" name="txtInicioSab" class="campo form-control" value="<?php echo $linha2["abertura"] ?>"/></td>
+                                                                                <td><input type="time" name="txtFimSab" class="campo form-control" value="<?php echo $linha2["fechamento"] ?>"/></td>
                                                                             </tr>
                                                                             <?php 
                                                                                 $linha2=$resultado->fetch_array();
@@ -460,8 +490,8 @@ if(isset($_GET["id"])){
                                                                             ?>
                                                                             <tr>
                                                                                 <td class="text-left"><input class="form-check-input" type="checkbox" id="sabado" value="6" name="txtSabado"><label class="form-check-label" for="sabado">Sábado</label></td>
-                                                                                <td><input type="text" name="txtInicioSab" class="campo form-control" /></td>
-                                                                                <td><input type="text" name="txtFimSab" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtInicioSab" class="campo form-control" /></td>
+                                                                                <td><input type="time" name="txtFimSab" class="campo form-control" /></td>
                                                                             </tr>
                                                                             <?php } ?>
                                                                             <!-- ./Sábado -->
