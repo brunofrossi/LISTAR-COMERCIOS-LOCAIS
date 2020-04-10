@@ -4,13 +4,17 @@
       <div class="list-group list-group-flush">
         <?php
             //buscar segmentos
-            $sql = "SELECT * FROM segmento ORDER BY nome";
+            $sql = "SELECT s.idsegmento,s.nome, COUNT(c.segmento_idsegmento) as total
+            FROM segmento s LEFT JOIN comercio c on c.segmento_idsegmento= s.idsegmento
+            GROUP BY s.nome
+            ORDER BY nome";
             $resultado= $conexao->query($sql);
 
             while($linha=$resultado->fetch_array()){
                 $link = "index.php?id=".$linha['idsegmento'];
                 $nome = $linha['nome'];
-                echo "<a href='$link' class='list-group-item list-group-item-action bg-light'>$nome</a>";
+                $total = $linha['total'];
+                echo "<a href='$link' class='list-group-item list-group-item-action bg-light'>$nome ($total) </a>";
             }
         ?>
     </div>
