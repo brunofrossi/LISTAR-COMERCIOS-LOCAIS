@@ -14,7 +14,7 @@
                 $link = "index.php?id=".$linha['idsegmento'];
                 $nome = $linha['nome'];
                 $total = $linha['total'];
-                echo "<a href='$link' class='list-group-item list-group-item-action bg-light'>$nome ($total) </a>";
+                echo "<a href='$link' class='list-group-item list-group-item-action bg-light'>$nome <span class='badge badge-pill badge-dark float-right'>$total</span></a>";
             }
         ?>
     </div>
