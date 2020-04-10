@@ -56,7 +56,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                             <div class="frontside">
                                
                                 <!--Listando os cadastros-->
-                                <div calss="col-xs-12">
+                                <div calss="table-responsive">
                                     <table class="table table-hover">
                                     <tr>
                                         <th>Nome</th>
