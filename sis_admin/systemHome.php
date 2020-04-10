@@ -51,9 +51,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 
                 <!--CARD-->
                 <div class="col-xs-12 col-md-10 offset-md-1">
-                    <div class="image-flip">
+                    <!--<div class="image-flip">
                         <div class="mainflip">
-                            <div class="frontside">
+                            <div class="frontside">-->
                                
                                 <!--Listando os cadastros-->
                                 <div calss="table-responsive">
@@ -84,9 +84,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                 </div>
                                 <!-- ./Listando os cadastros -->
 
-                            </div>
+                            <!-- </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!--./CARD-->
                 
