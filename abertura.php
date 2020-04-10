@@ -1,6 +1,6 @@
                         
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-xs-12 col-sm-6 ">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">#Fiqueemcasa</h5>
@@ -14,11 +14,11 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-xs-12 col-sm-6 ">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Mural Online</h5>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/dAtd5Bw6RjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="350rem" height="200rem" src="https://www.youtube.com/embed/dAtd5Bw6RjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>

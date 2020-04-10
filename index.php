@@ -17,38 +17,40 @@
 <body>
 
 <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-    <img src="assets/logoif.png" />
-      <div class="sidebar-heading cabecalho-titulo text-center">Agenda Telefônica<p class="text-right p-cadastro"><a class="btn btn-danger link-cadastro" href="./sis_admin/index.php">Cadastre-se</a></p></div>
-      <div class="list-group list-group-flush">
-
-        <?php
-            //buscar segmentos
-            $sql = "SELECT * FROM segmento ORDER BY nome";
-            $resultado= $conexao->query($sql);
-
-            while($linha=$resultado->fetch_array()){
-                $link = "index.php?id=".$linha['idsegmento'];
-                $nome = $linha['nome'];
-                echo "<a href='$link' class='list-group-item list-group-item-action bg-light'>$nome</a>";
-            }
-        ?>
-
-      </div>
-    </div>
-    <!-- /sidebar -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <?php
+    <!-- menu -->
+    <?php
             include 'menu.php';
-        ?>
-     
+    ?>
+    <!-- /menu -->
 
-      <div class="container-fluid">
-            <div class="row">
-                <div class="espaco"> &nbsp; </div>
+    
+    <div id="page-content-wrapper">
+     <!-- Titulo da pagina principal -->   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom bg-sup">
+        <button class="btn btn-primary bt-menu" id="menu-toggle">
+            <img src="icons/list.svg" alt="" width="24" height="24" title="Facebook">
+        </button>
+        <span class="navbar-text text-center nome-sup">
+            <?php
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    //buscar nome segmento
+                    $sql = "SELECT * FROM segmento WHERE idsegmento = $id";
+                    $resultado= $conexao->query($sql);
+
+                    $linha=$resultado->fetch_array();
+                    echo $linha['nome'];
+                }else{
+                    echo "";
+                }
+            ?>
+        </span>
+    </nav>
+     <!--/Titulo da pagina principal -->  
+     <!--Conteúdo  --> 
+     <div class="container-fluid">
+        <div class="row">
+            <div class="espaco"> &nbsp; </div>
                 <?php
                     if(isset($_GET['id'])){
                         include 'empresa.php';  
@@ -56,11 +58,12 @@
                         include 'abertura.php';
                     }
                 ?>
-                <div class="espaco"> &nbsp; </div>
-            </div>
+            <div class="espaco"> &nbsp; </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
+    <!--/Conteúdo  --> 
+    </div>
+   
 </div>
 
 <!--Script-->
