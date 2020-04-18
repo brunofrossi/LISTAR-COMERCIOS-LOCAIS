@@ -296,7 +296,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 
         //enviar a imagem
         if($_FILES["txtImagem"]["error"]!=0){
-            $imagem = "shop_379425.png";
+            $imagem = "SemLogo.png";
         }else{
             move_uploaded_file($imagemTmp, "../images/".$imagem);
         }
@@ -398,8 +398,6 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
             echo "<script>alert('Registro cadastrado com sucesso!');</script>";
         }else{
             echo "<script>alert('Erro ao cadastrar o registro');</script>";
-            echo var_dump($sql);
-            echo var_dump($conexao);
         }
     }
 ?>
