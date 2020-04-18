@@ -1,6 +1,7 @@
 <?php
     include '../conexao.php';
     session_start();
+    $id = $_SESSION['id'];
 if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
 {
   unset($_SESSION['email']);
@@ -17,7 +18,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kta em Casa</title>
+    <title><?=$Titulo_head;?></title>
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="css/simple-sidebar.css" rel="stylesheet" id="sidebar-css">
     <link href="css/style.css" rel="stylesheet" id="style">
@@ -277,7 +278,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
         $telefone=$_POST["txtTelefone"];
         $instagram=$_POST["txtInstagram"];
         $facebook=$_POST["txtFacebook"];
-        $aprovado=1;
+        $aprovado=0;
         $ranking=0;
         $rua=$_POST["txtLogradouro"];
         $numero=$_POST["txtNumero"];

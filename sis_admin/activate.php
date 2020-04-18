@@ -17,7 +17,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Telefônica</title>
+    <title><?=$Titulo_head;?></title>
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="css/simple-sidebar.css" rel="stylesheet" id="sidebar-css">
     <link href="css/style.css" rel="stylesheet" id="style">

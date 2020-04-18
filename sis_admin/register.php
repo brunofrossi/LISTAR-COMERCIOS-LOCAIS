@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Telefônica</title>
+    <title><?=$Titulo_head;?></title>
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="css/simple-sidebar.css" rel="stylesheet" id="sidebar-css">
     <link href="css/style.css" rel="stylesheet" id="style">
@@ -19,7 +19,7 @@
 <div class="d-flex" id="wrapper">
 <!-- Menu -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading cabecalho-titulo text-center">Agenda Telefônica<p class="text-right p-cadastro"></p>
+        <div class="sidebar-heading cabecalho-titulo text-center"><?php echo $Titulo_menu?><p class="text-right p-cadastro"></p>
         </div>
             <div class="list-group list-group-flush">
                 <a href="../index.php" class='list-group-item list-group-item-action bg-light'>Voltar</a>
