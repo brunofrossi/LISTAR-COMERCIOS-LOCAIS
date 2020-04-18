@@ -10,6 +10,18 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 
   $id = $_SESSION['id'];
 
+    if(isset($_GET["ativar"])){
+        //Query Atualizar
+        $idcomercio=$_GET["ativar"];
+        $sql="UPDATE `comercio` SET  aprovado=1  WHERE idcomercio = $idcomercio";
+        $conexao->query($sql);
+
+        if($conexao->errno > 0){
+            echo "<script>alert('Erro ao cadastrar o registro');</script>";
+            echo var_dump($sql);
+            echo var_dump($conexao);
+        }
+    }    
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +85,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                             echo "<td>".$linha["nome_fantasia"]."</td>";
                                             echo "<td>".$linha["telefone"]."</td>";
                                             echo "<td>".$linha["nome_responsavel"]."</td>";
-                                            echo "<td><a href='alterClient.php?id=".$linha["idcomercio"]."'><img src='icons/pencil.svg' alt='Alterar' title='Alterar'> Ativar</a></td>";
+                                            echo "<td><a href='activate.php?ativar=".$linha["idcomercio"]."'><img src='icons/pencil.svg' alt='Alterar' title='Alterar'> Ativar</a></td>";
                                             echo "</tr>";
                                         }
                                     ?>

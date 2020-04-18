@@ -38,7 +38,6 @@
                     //buscar nome segmento
                     $sql = "SELECT * FROM comercio WHERE idcomercio = $id";
                     $resultado= $conexao->query($sql);
-
                     $linha=$resultado->fetch_array();
                     echo $linha['nome_fantasia'];
                 }else{

@@ -8,9 +8,6 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
   unset($_SESSION['senha']);
   header('location:index.php');
   }
-
-  $idUsuario = $_SESSION['id'];
-
 ?>
 
 <!DOCTYPE html>
@@ -312,13 +309,13 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
        
         $sql="INSERT INTO `comercio` ( `nome_fantasia`, `telefone`, `instagram`, `facebook`, `aprovado`, `ranking`,
         `segmento_idsegmento`, `rua`, `numero`, `complemento`, `bairro`, `CEP`, `site`, `imagem`, `nome_responsavel`, `observacao`, usuario_idusuario,`descricao_negocio`,`taxa_entrega`,`forma_pagamento`,`Whatsapp`) 
-         VALUES ( '$nome', '$telefone', '$instagram', '$facebook', $aprovado, $ranking, $idsegmento, 
-        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs',$idUsuario,'$Negocio','$taxa','$pagamento',$Whatsapp ) ";
+         VALUES ( '$nome', '$telefone', '$instagram', '$facebook','$aprovado', '$ranking', '$idsegmento', 
+        '$rua', '$numero', '$complemento', '$bairro', '$cep', '$site', '$imagem', '$resposavel', '$obs','$id','$Negocio','$taxa','$pagamento','$Whatsapp') ";
        
         $conexao->query($sql);
 
         if($conexao->errno == 0){
-            $id = $conexao->insert_id;
+            $idcomercio = $conexao->insert_id;
 
             //Capturando os dias da semana e os horários
             //Segunda
@@ -327,7 +324,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 $fim = $_POST["txtFimSeg"];
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
-                 VALUES ( '$id', 1, '$inicio', '$fim') ";
+                 VALUES ( '$idcomercio', 1, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
             }
@@ -338,7 +335,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 $fim = $_POST["txtFimTer"];
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
-                 VALUES ( '$id', 2, '$inicio', '$fim') ";
+                 VALUES ( '$idcomercio', 2, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
             }
@@ -349,7 +346,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 $fim = $_POST["txtFimQua"];
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
-                 VALUES ( '$id', 3, '$inicio', '$fim') ";
+                 VALUES ( '$idcomercio', 3, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
             }
@@ -360,7 +357,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 $fim = $_POST["txtFimQui"];
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
-                 VALUES ( '$id', 4, '$inicio', '$fim') ";
+                 VALUES ( '$idcomercio', 4, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
             }
@@ -371,7 +368,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 $fim = $_POST["txtFimSex"];
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
-                 VALUES ( '$id', 5, '$inicio', '$fim') ";
+                 VALUES ( '$idcomercio', 5, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
             }
@@ -382,7 +379,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 $fim = $_POST["txtFimSab"];
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
-                 VALUES ( '$id', 6, '$inicio', '$fim') ";
+                 VALUES ( '$idcomercio', 6, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
             }
@@ -393,7 +390,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                 $fim = $_POST["txtFimDom"];
 
                 $sql="INSERT INTO `funcionamento` ( `comercio_idcomercio`, `dia_semana`, `abertura`, `fechamento`) 
-                 VALUES ( '$id', 0, '$inicio', '$fim') ";
+                 VALUES ( '$idcomercio', 0, '$inicio', '$fim') ";
         
                 $conexao->query($sql);
             }
@@ -401,6 +398,8 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
             echo "<script>alert('Registro cadastrado com sucesso!');</script>";
         }else{
             echo "<script>alert('Erro ao cadastrar o registro');</script>";
+            echo var_dump($sql);
+            echo var_dump($conexao);
         }
     }
 ?>

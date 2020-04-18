@@ -6,6 +6,7 @@
             //buscar segmentos
             $sql = "SELECT s.idsegmento,s.nome, COUNT(c.segmento_idsegmento) as total
             FROM segmento s LEFT JOIN comercio c on c.segmento_idsegmento= s.idsegmento
+            where c.aprovado=1
             GROUP BY s.nome
             ORDER BY nome";
             $resultado= $conexao->query($sql);

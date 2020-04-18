@@ -56,33 +56,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                             <div class="frontside">-->
                                
                                 <!--Listando os cadastros-->
-                                <div calss="table-responsive">
-                                    <table class="table table-hover">
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Telefone</th>
-                                        <th>Segmento</th>
-                                        <th> </th>
-                                    </tr>
-                                    <?php
-                                        //Exibir os itens gravados
-                                        $sql = "SELECT * FROM comercio c 
-                                        INNER JOIN segmento s 
-                                        ON  c.segmento_idsegmento = s.idsegmento
-                                        WHERE usuario_idusuario = $id;";
-                                        $resultado= $conexao->query($sql);
-                                        while($linha=$resultado->fetch_array()){
-                                            echo "<tr>";
-                                            echo "<td>".$linha["nome_fantasia"]."</td>";
-                                            echo "<td>".$linha["telefone"]."</td>";
-                                            echo "<td>".$linha["nome"]."</td>";
-                                            echo "<td><a href='alterClient.php?id=".$linha["idcomercio"]."'><img src='icons/pencil.svg' alt='Alterar' title='Alterar'> Alterar</a></td>";
-                                            echo "</tr>";
-                                        }
-                                    ?>
-                                    </table>
-                                </div>
-                                <!-- ./Listando os cadastros -->
+                               <p>em desenvolvimento :)</p>
 
                             <!-- </div>
                         </div>
