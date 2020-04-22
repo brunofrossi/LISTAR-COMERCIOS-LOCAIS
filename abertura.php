@@ -8,10 +8,10 @@
               <h5 class="card-title">#Fiqueemcasa</h5>
               <p class="card-text">Saiba quem está entregando ou atendendo em domicílio para que você #fiqueemcasa</p>
               <p class="card-text">O que você procura?</p>
-              <a href="./index.php?id=1" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Lanches e Refeições</a>
-              <a href="./index.php?id=1" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Mercados</a>
-              <a href="./index.php?id=1" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Hortifruti</a>
-              <a href="./index.php?id=1" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Farmácia</a>
+              <a href="./index.php?id=107" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Lanches</a>
+              <a href="./index.php?id=113" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Mercados</a>
+              <a href="./index.php?id=110" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Hortifruti</a>
+              <a href="./index.php?id=108" type="button" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Farmácia</a>
             </div> <!-- ./card body -->
           </div> <!-- ./card -->
         </div> <!-- ./frontside -->
