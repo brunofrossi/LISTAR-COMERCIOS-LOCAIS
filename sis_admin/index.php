@@ -102,7 +102,9 @@
     </div>
     <!-- /#page-content-wrapper -->
 </div>
-
+<?php
+    include("rodape.php");
+    ?>
 <!-- validação de dados -->
 
 <?php
