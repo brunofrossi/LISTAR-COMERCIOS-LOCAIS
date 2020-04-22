@@ -55,6 +55,9 @@
         <!--/Conteúdo  --> 
         </div>
     </div>
+    <?php
+    include("rodape.php");
+    ?>
         <!--Script-->
         <script>
             $("#menu-toggle").click(function(e) {

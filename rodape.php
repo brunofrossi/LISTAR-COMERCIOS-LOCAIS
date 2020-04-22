@@ -3,8 +3,8 @@
             <div class="row" >
                 <div class="col-sm-3" >
                     <ul >
-                        <li > <img src="assets/logoifkta.png" width="25%" alt="Imagem de capa do card"></li>
-                        <li > <img  src="assets/logoifkta.png" width="25%" alt="Imagem de capa do card"></li>
+                        <li > <img src="../assets/logoifkta.png" width="25%" alt="Imagem de capa do card"></li>
+                        <li > <img  src="../assets/logoifkta.png" width="25%" alt="Imagem de capa do card"></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">

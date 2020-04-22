@@ -527,7 +527,9 @@ if(isset($_GET["id"])){
     <!-- /#page-content-wrapper -->
 </div>
 
-
+<?php
+    include("rodape.php");
+?>
 
 <!--Script-->
 <script>

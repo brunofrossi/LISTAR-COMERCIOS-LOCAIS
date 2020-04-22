@@ -401,7 +401,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
         }
     }
 ?>
-
+<?php
+    include("rodape.php");
+?>
 <!--Script-->
 <script>
     $("#menu-toggle").click(function(e) {

@@ -71,7 +71,9 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
     </div>
     <!-- /#page-content-wrapper -->
 </div>
-
+<?php
+    include("rodape.php");
+?>
 
 <!--Script-->
 <script>

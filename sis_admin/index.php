@@ -104,7 +104,7 @@
 </div>
 <?php
     include("rodape.php");
-    ?>
+?>
 <!-- validação de dados -->
 
 <?php
