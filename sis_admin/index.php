@@ -12,8 +12,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="css/simple-sidebar.css" rel="stylesheet" id="sidebar-css">
     <link href="css/style.css" rel="stylesheet" id="style">
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
 

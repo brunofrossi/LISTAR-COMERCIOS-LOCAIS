@@ -11,6 +11,7 @@
                     <ul class="item-rodape">
                         <li ><a href="http://ktaemcasa.com.br/" class="small">Inicio</a></li>
                         <li ><a href="http://ktaemcasa.com.br/sis_admin/index.php" class="small">Cadastrar no sistema</a></li>
+                        <li ><a href="http://ktaemcasa.com.br/contato.php" class="small">Contato</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
