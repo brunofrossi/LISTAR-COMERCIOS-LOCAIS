@@ -28,6 +28,6 @@
             </div>
         </div>
         <div class="footer-copyright" >
-            <p>© 2020 Copyright</p>
+            <p class="text-center">© 2020 Copyright</p>
         </div>
  </footer>
