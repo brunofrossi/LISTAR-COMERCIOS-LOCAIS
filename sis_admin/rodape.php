@@ -1,4 +1,4 @@
-<footer class="fixed-bottom">
+<footer >
    <div class="container" >
             <div class="row align-middle" >
                 <div class="col-sm-3" >

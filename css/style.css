@@ -44,3 +44,24 @@
 .p-cadastro{
     margin: 0 -10px -10px 0;
 }
+
+
+
+.item-rodape{
+    list-style-type: none;
+}
+
+footer{
+    background-color: #f8f9fa !important;
+    padding-top: 10px;
+    position: relative;
+}
+
+.item-rodape > li > a{
+    color: #333333;
+    font-weight: bolder;
+}
+
+.item-rodape > li > img{
+    height: 70px;
+}

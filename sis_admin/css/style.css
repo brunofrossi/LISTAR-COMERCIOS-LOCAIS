@@ -57,6 +57,7 @@
 footer{
     background-color: #f8f9fa !important;
     padding-top: 10px;
+    position: relative;
 }
 
 .item-rodape > li > a{
