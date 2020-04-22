@@ -49,3 +49,21 @@
     position: absolute !important;
     right: 10px !important;
 }
+
+.item-rodape{
+    list-style-type: none;
+}
+
+footer{
+    background-color: #f8f9fa !important;
+    padding-top: 10px;
+}
+
+.item-rodape > li > a{
+    color: #333333;
+    font-weight: bolder;
+}
+
+.item-rodape > li > img{
+    height: 70px;
+}
