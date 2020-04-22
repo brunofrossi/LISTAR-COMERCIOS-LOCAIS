@@ -104,7 +104,7 @@
 </div>
 <?php
     include("rodape.php");
-    ?>
+?>
 <!-- validação de dados -->
 
 <?php
@@ -131,28 +131,6 @@
             }
     }
 ?>
-
-<!--Script-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--Script-->
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
