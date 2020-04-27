@@ -29,4 +29,10 @@ INSERT INTO segmento (idsegmento,nome) VALUES
 
 
 
+INSERT INTO segmento (idsegmento,nome) VALUES 
+(NULL, 'Papelaria'),
+(NULL, 'Gás'),
+(NULL, 'Água mineral'),
+(NULL, 'Bebidas'),
+(NULL, 'Laticínios');
 
