@@ -1,8 +1,9 @@
 <?php
     include '../conexao.php';
     session_start();
-    $id = $_SESSION['id'];
-if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+    $id=$_SESSION['id'];
+    $servidor=$_SESSION['servidor']; 
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true)or ($_SESSION['servidor']<>1) )
 {
   unset($_SESSION['email']);
   unset($_SESSION['senha']);
@@ -59,7 +60,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                     <tr>
                                         <th>Nome</th>
                                         <th>Telefone</th>
-                                       
+                                        <th> </th>
                                         <th> </th>
                                     </tr>
                                     <?php
@@ -71,6 +72,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
                                             echo "<td>".$linha["nome_fantasia"]."</td>";
                                             echo "<td>".$linha["telefone"]."</td>";
                                             echo "<td><a href='alterClient.php?id=".$linha["idcomercio"]."'><img src='icons/pencil.svg' alt='Alterar' title='Alterar'> Alterar</a></td>";
+                                            echo "<td><a href='alterClient.php?id=".$linha["idcomercio"]."'><img src='icons/bin.png' alt='Deletar' title='Deletar'> Deletar</a></td>";
                                             echo "</tr>";
                                         }
                                     ?>

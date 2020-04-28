@@ -115,13 +115,14 @@
 
         if(isset($email)and isset($senha)){
             $senha=md5($senha);
-           $sql="SELECT idusuario FROM usuario WHERE email='$email' and senha='$senha'";
+           $sql="SELECT * FROM usuario WHERE email='$email' and senha='$senha'";
            $retorno = $conexao->query($sql);
            if($retorno->num_rows>0){
             $line=$retorno->fetch_array();
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
-            $_SESSION['id'] = $line['idusuario'];            
+            $_SESSION['id'] = $line['idusuario'];  
+            $_SESSION['servidor'] = $line['servidor'];          
             echo "<script>document.location='systemHome.php'</script>";
            
             }else{

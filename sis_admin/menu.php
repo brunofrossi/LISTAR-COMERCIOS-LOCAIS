@@ -15,9 +15,8 @@
             if($resultado->num_rows>0){
                 ?>
                     <a href="activate.php" class='list-group-item list-group-item-action bg-light'>Ativar Cadastro</a>
+                    <a href="alteradm.php" class='list-group-item list-group-item-action bg-light'>Editar e Apagar</a>
                     <a href="mural.php" class='list-group-item list-group-item-action bg-light'>Mural</a>
-                    <a href="alteradm.php" class='list-group-item list-group-item-action bg-light'>Editar</a>
-                    
 
                 <?php
             }
